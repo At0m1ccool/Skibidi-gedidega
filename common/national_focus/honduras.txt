@@ -1,0 +1,1975 @@
+focus_tree = {
+	id = honduras
+	continuous_focus_position = { x = 850 y = 1500 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = HON
+		}
+	}
+	#Exploit National Resources
+	focus = {
+		id = HON_exploit_national_resources
+		icon = GFX_HON_exploit_national_resources-632082
+		x = 4
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_the_steam_locomotive  }
+		completion_reward = {
+			
+						IF = {
+							limit = {
+								original_tag = HON
+							}
+							add_resource = {
+								type = steel
+								amount = 8
+								state = 312  
+							}
+						}
+					
+		}
+	}
+
+	#The State Bank of Honduras
+	focus = {
+		id = HON_the_state_bank_of_honduras
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HON_develop_honduras  }
+		completion_reward = {
+			
+						add_ideas = HOA_state_bank_idea
+					
+		}
+	}
+
+	#Fill The Road Gaps
+	focus = {
+		id = HON_fill_the_road_gaps
+		icon = GFX_HON_fill_the_road_gaps-632080
+		x = 4
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_develop_honduras  }
+		completion_reward = {
+			
+						random_owned_controlled_state = {
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+								instant_build = yes
+							}
+						}
+						random_owned_controlled_state = {
+							add_building_construction = {
+								type = infrastructure
+								level = 1
+								instant_build = yes
+							}
+						}
+					
+		}
+	}
+
+	#Develop Honduras
+	focus = {
+		id = HON_develop_honduras
+		icon = GFX_focus_generic_industry_1
+		x = 3
+		y = 0
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		completion_reward = {
+			
+						
+						capital_scope = {
+							ETH_upgrade_state_category = yes 
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = industrial_complex
+								level = 1
+								instant_build = yes
+							}
+						}
+					
+		}
+	}
+
+	#The Steam Locomotive
+	focus = {
+		id = HON_the_steam_locomotive
+		icon = GFX_HON_the_steam_locomotive-632081
+		x = 4
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_fill_the_road_gaps  }
+		completion_reward = {
+			
+						IF = {
+							limit = {
+								NOT = { has_tech = basic_train }
+							}
+							set_technology = { 
+								basic_train = 1
+								popup = yes
+							}
+						}
+						add_equipment_to_stockpile = { 
+							type = train_equipment_1
+							amount = 10 
+							producer = SPR
+						}
+					
+		}
+	}
+
+	#The Honduras Regional Development Fund
+	focus = {
+		id = HON_the_honduras_regional_development_fund
+		icon = GFX_HON_the_honduras_regional_development_fund-632084
+		x = 0
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HON_the_state_bank_of_honduras  }
+		mutually_exclusive = { focus = HON_the_honduran_industrial_fund  }
+		completion_reward = {
+			
+						every_owned_state = {
+							custom_effect_tooltip = HOA_state_owned_industry_tt
+							add_to_variable = { ETH_state_development_production_speed = 0.15 }
+							add_to_variable = { ETH_state_development_local_building_slots_factor = 0.15 }		
+						}	
+					
+		}
+	}
+
+	#The Honduran Industrial Fund
+	focus = {
+		id = HON_the_honduran_industrial_fund
+		icon = GFX_HON_the_honduran_industrial_fund-632083
+		x = 2
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_the_state_bank_of_honduras  }
+		mutually_exclusive = { focus = HON_the_honduras_regional_development_fund  }
+		completion_reward = {
+			 
+						random_owned_controlled_state = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = industrial_complex
+								level = 1
+								instant_build = yes
+							}
+						}
+						random_owned_controlled_state = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = industrial_complex
+								level = 1
+								instant_build = yes
+							}
+						}
+					
+		}
+	}
+
+	#Support the Agrarians
+	focus = {
+		id = HON_support_the_agrarians
+		icon = GFX_HON_support_the_agrarians-632086
+		x = -1
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HON_the_honduras_regional_development_fund  }
+		completion_reward = {
+			
+						every_owned_state = {
+							custom_effect_tooltip = HOA_support_the_agrarians_tt
+							add_to_variable = { ETH_state_development_production_speed = 0.10 }
+							add_to_variable = { ETH_state_development_local_building_slots_factor = 0.10 }		
+						}	
+					
+		}
+	}
+
+	#Promote Local Crafts
+	focus = {
+		id = HON_promote_local_crafts
+		icon = GFX_HON_promote_local_crafts-632085
+		x = 1
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_the_honduras_regional_development_fund focus = HON_the_honduran_industrial_fund  }
+		completion_reward = {
+			
+						add_tech_bonus = {
+							name = HOA_promote_local_crafts
+							bonus = 0.25
+							uses = 2
+							category = industry 
+						}
+						add_tech_bonus = {
+							name = HOA_promote_local_crafts
+							bonus = 0.5
+							uses = 1
+							category = support_tech
+						}
+					
+		}
+	}
+
+	#Use the Natural Harbors
+	focus = {
+		id = HON_use_the_natural_harbors
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 0
+		y = 4
+		prerequisite = { focus = HON_promote_local_crafts  }
+		mutually_exclusive = { focus = HON_the_tegucigalpa_airport  }
+		cost = 10
+		available = {
+			
+						any_owned_state = {
+							is_coastal = yes
+							is_controlled_by = ROOT
+						}
+					
+		}
+		completion_reward = {
+			
+						random_owned_controlled_state = {
+							limit = { is_coastal = yes }
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = dockyard
+								level = 1
+								instant_build = yes
+							}
+						}
+					
+		}
+	}
+
+	#The Tegucigalpa Airport
+	focus = {
+		id = HON_the_tegucigalpa_airport
+		icon = GFX_HON_the_tegucigalpa_airport-632087
+		x = 2
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_promote_local_crafts  }
+		mutually_exclusive = { focus = HON_use_the_natural_harbors  }
+		completion_reward = {
+			
+						capital_scope = {
+							add_building_construction = {
+								type = air_base
+								level = 2
+								instant_build = yes
+							}
+						}
+						add_equipment_to_stockpile = { 
+							type = transport_plane_equipment
+							amount = 60 
+							producer = ROOT
+						}
+					
+		}
+	}
+
+	#A Steamboat Fleet
+	focus = {
+		id = HON_a_steamboat_fleet
+		icon = GFX_HON_a_steamboat_fleet-5616
+		x = -1
+		y = 5
+		prerequisite = { focus = HON_use_the_natural_harbors  }
+		cost = 10
+		completion_reward = {
+			
+						add_tech_bonus = {
+							name = HOA_a_steamboat_fleet
+							bonus = 0.5
+							uses = 2
+							category = dd_tech
+						}
+						navy_experience = 25
+					
+		}
+	}
+
+	#Improve The Lumber Industry
+	focus = {
+		id = HON_improve_the_lumber_industry
+		icon = GFX_HON_improve_the_lumber_industry-632088
+		x = 1
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_use_the_natural_harbors focus = HON_the_tegucigalpa_airport  }
+		completion_reward = {
+			
+						every_owned_state = {
+							custom_effect_tooltip = HOA_improved_irrigation_systems_tt
+							add_to_variable = { ETH_state_development_production_speed = 0.15 }
+							add_to_variable = { ETH_state_development_local_building_slots_factor = 0.15 }		
+						}
+					
+		}
+	}
+
+	#The Honduran Air fleet
+	focus = {
+		id = HON_the_honduran_air_fleet
+		icon = GFX_HON_the_honduran_air_fleet-632090
+		x = 3
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_the_tegucigalpa_airport  }
+		completion_reward = {
+			
+						add_tech_bonus = {
+							name = HOA_the_adjective_air_fleet
+							bonus = 0.5
+							uses = 1
+							category = light_air
+						}
+						add_tech_bonus = {
+							name = HOA_the_adjective_air_fleet
+							bonus = 0.5
+							uses = 1
+							category = medium_air
+						}
+						add_tech_bonus = {
+							name = HOA_the_adjective_air_fleet
+							bonus = 0.5
+							uses = 1
+							category = heavy_air
+						}
+						air_experience = 20
+					
+		}
+	}
+
+	#State-Funded Projects
+	focus = {
+		id = HON_statefunded_projects
+		icon = GFX_HON_statefunded_projects-632092
+		x = 1
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_a_steamboat_fleet focus = HON_the_honduran_air_fleet focus = HON_improve_the_lumber_industry  }
+		completion_reward = {
+			
+						add_ideas = HOA_state_funded_projects_idea
+					
+		}
+	}
+
+	#The Grand University of Honduras
+	focus = {
+		id = HON_the_grand_university_of_honduras
+		icon = GFX_HON_the_grand_university_of_honduras-632093
+		x = 1
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_statefunded_projects  }
+		completion_reward = {
+			
+						add_research_slot = 1
+					
+		}
+	}
+
+	#The Honduran Armed Forces
+	focus = {
+		id = HON_the_honduran_armed_forces
+		icon = GFX_focus_mex_soldaderas
+		x = 8
+		y = 0
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			
+						army_experience = 25
+					
+		}
+	}
+
+	#Warrior Tradition
+	focus = {
+		id = HON_warrior_tradition
+		icon = GFX_focus_GRE_reviving_the_spartan_warrior_spirit
+		x = 8
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_the_honduran_armed_forces  }
+		completion_reward = {
+
+				add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 500
+				producer = MEX
+			}
+			
+						division_template = {
+							name = "Honduran Militia"
+							is_locked = no
+							regiments = {
+								irregular_infantry = { x = 0 y = 0 }
+								irregular_infantry = { x = 0 y = 1 }
+								irregular_infantry = { x = 0 y = 2 }
+								irregular_infantry = { x = 1 y = 0 }
+								irregular_infantry = { x = 1 y = 1 }
+								irregular_infantry = { x = 1 y = 2 }	
+							}
+						}
+						capital_scope = {
+							create_unit = {
+								division = "name = \"Irregular Infantry\" division_template = \"Honduran Militia\" start_experience_factor = 0.05 start_equipment_factor = 1 start_manpower_factor = 1"
+								owner = HON
+								count = 3
+							}
+						}
+					
+		}
+	}
+
+	#Strengthen the Militia
+	focus = {
+		id = HON_strengthen_the_militia
+		icon = GFX_goal_generic_political_pressure
+		x = 7
+		y = 2
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_warrior_tradition  }
+		mutually_exclusive = { focus = HON_a_professional_army  }
+		completion_reward = {
+			
+						add_units_to_division_template = {
+							template_name = "Honduran Militia" 
+							regiments = {
+								irregular_infantry = 0 
+								irregular_infantry = 1 
+							}
+						}
+						add_ideas = HOA_improved_irregulars_idea
+					
+		}
+	}
+
+	#A Professional Army
+	focus = {
+		id = HON_a_professional_army
+		icon = GFX_focus_SOV_mobilization_plan
+		x = 9
+		y = 2
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_warrior_tradition  }
+		mutually_exclusive = { focus = HON_strengthen_the_militia  }
+		completion_reward = {
+			
+						add_ideas = HON_prof_army
+					
+		}
+	}
+
+	#Honduran Army's Finest
+	focus = {
+		id = HON_honduranarmysfinest
+		icon = GFX_goal_generic_military_sphere
+		x = 6
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_strengthen_the_militia  }
+		completion_reward = {
+			
+						add_ideas = HOA_our_finest_idea
+					
+		}
+	}
+
+	#Reform The Army
+	focus = {
+		id = HON_reform_army
+		icon = GFX_HON_utilize_our_strengths-632060
+		x = 8
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_strengthen_the_militia focus = HON_a_professional_army  }
+		completion_reward = {
+
+remove_ideas = hon_disorganized_army
+
+		}
+	}
+
+	#Reform the Conscription
+	focus = {
+		id = HON_reform_the_conscription
+		icon = GFX_focus_chi_army_reform
+		x = 10
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_a_professional_army  }
+		completion_reward = {
+			
+						add_war_support = 0.1
+						IF = {
+							limit = { 
+								NOT = { has_idea = extensive_conscription }
+								NOT = { has_idea = service_by_requirement }
+								NOT = { has_idea = all_adults_serve }
+								NOT = { has_idea = scraping_the_barrel }
+							}
+							add_ideas = extensive_conscription
+						}
+			
+					
+		}
+	}
+
+	#Eyes on the Imperialists
+	focus = {
+		id = HON_eyes_on_the_imperialists
+		icon = GFX_focus_mex_exile_calles
+		x = 7
+		y = 4
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_reform_army  }
+		completion_reward = {
+			
+						add_doctrine_cost_reduction = {
+							name = HOA_eyes_on_the_imperialists
+							cost_reduction = 0.25
+							uses = 1
+							category = land_doctrine
+						}
+						add_doctrine_cost_reduction = {
+							name = HOA_eyes_on_the_imperialists
+							cost_reduction = 0.25
+							uses = 1
+							category = air_doctrine
+						}
+						add_doctrine_cost_reduction = {
+							name = HOA_eyes_on_the_imperialists
+							cost_reduction = 0.25
+							uses = 1
+							category = naval_doctrine
+						}
+					
+		}
+	}
+
+	#Encourage Local Arms Production
+	focus = {
+		id = HON_encourage_local_arms_production
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 9
+		y = 4
+		prerequisite = { focus = HON_reform_army  }
+		cost = 4
+		completion_reward = {
+			
+						random_owned_controlled_state = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = arms_factory
+								level = 1
+								instant_build = yes
+							}
+						}
+						random_owned_controlled_state = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = arms_factory
+								level = 1
+								instant_build = yes
+							}
+						}
+					
+		}
+	}
+
+	#Honduran Tank Program
+	focus = {
+		id = HON_honduran_tank_program
+		icon = GFX_HON_honduran_tank_program-632072
+		x = 6
+		y = 5
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_eyes_on_the_imperialists  }
+		mutually_exclusive = { focus = HON_artillery_modernization  } mutually_exclusive = { focus = HON_infantry_focus  }
+		completion_reward = {
+			
+						add_tech_bonus = {
+							name = HOA_metal_beasts
+							bonus = 0.5
+							uses = 2
+							category = armor 
+						}
+					
+		}
+	}
+
+	#Artillery Modernization
+	focus = {
+		id = HON_artillery_modernization
+		icon = GFX_HON_artillery_modernization-632073
+		x = 8
+		y = 5
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_eyes_on_the_imperialists  } prerequisite = { focus = HON_encourage_local_arms_production  }
+		mutually_exclusive = { focus = HON_honduran_tank_program  } mutually_exclusive = { focus = HON_infantry_focus  }
+		completion_reward = {
+			
+						add_tech_bonus = {
+							name = HOA_the_roars_of_thunder
+							bonus = 0.5
+							uses = 2
+							category = artillery 
+							category = cat_anti_tank 
+						}
+					
+		}
+	}
+
+	#Infantry Focus
+	focus = {
+		id = HON_infantry_focus
+		icon = GFX_HON_infantry_focus-632075
+		x = 10
+		y = 5
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_encourage_local_arms_production  }
+		mutually_exclusive = { focus = HON_honduran_tank_program  } mutually_exclusive = { focus = HON_artillery_modernization  }
+		completion_reward = {
+			
+						add_tech_bonus = {
+							name = HOA_develop_indigenous_models
+							bonus = 0.25
+							uses = 2
+							category = infantry_weapons 
+						}
+					
+		}
+	}
+
+	#The Metal Beasts
+	focus = {
+		id = HON_the_metal_beasts
+		icon = GFX_HON_the_metal_beasts-632076
+		x = 6
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_honduran_tank_program  }
+		completion_reward = {
+			
+						IF = {
+							limit = {
+								has_dlc = "No Step Back"
+								NOT = { has_tech = gwtank_chassis }
+							}
+							set_technology = { 
+								gwtank_chassis  = 1
+								popup = no
+							}
+			
+						}
+						ELSE_IF = {
+							limit = {
+								NOT = { has_dlc = "No Step Back" }
+								NOT = { has_tech = gwtank }
+							}
+							set_technology = { 
+								gwtank = 1
+								popup = no
+							}
+							
+						}
+						division_template = {
+							name = "Steel Lions"
+							is_locked = no
+							regiments = {
+								light_armor = { x = 0 y = 0 }
+								light_armor = { x = 0 y = 1 }
+								light_armor = { x = 0 y = 2 }
+							}
+						}
+						capital_scope = {
+							create_unit = {
+								division = "name = \"Steel Lions Brigade\" division_template = \"Steel Lions\" start_experience_factor = 0.05 start_equipment_factor = 1 start_manpower_factor = 1"
+								owner = ROOT
+								count = 1
+							}
+						}
+					
+		}
+	}
+
+	#Honduran Warfare
+	focus = {
+		id = HON_honduran_warfare
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		x = 8
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_artillery_modernization  }
+		completion_reward = {
+			
+						add_units_to_division_template = {
+							template_name = "Honduran Militia" 
+							support = {
+								artillery = 0 
+							}
+							regiments = {
+								artillery_brigade = 2 
+							}
+						}
+					
+		}
+	}
+
+	#Modern Infantry
+	focus = {
+		id = HON_modern_infantry
+		icon = GFX_HON_modern_infantry-632078
+		x = 10
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_infantry_focus  }
+		completion_reward = {
+			
+						division_template = {
+							name = "Regular Infantry"
+							is_locked = no
+							regiments = {
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 0 y = 3 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 1 y = 3 }
+							}
+						}
+						capital_scope = {
+							create_unit = {
+								division = "name = \"Regular Infantry Division\" division_template = \"Regular Infantry\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+								owner = ROOT
+								count = 2
+							}
+						}
+					
+		}
+	}
+
+	#The Future Of Honduras
+	focus = {
+		id = HON_the_future_of_honduras
+		icon = GFX_focus_mex_caudillo_private_armies
+		x = 17
+		y = 0
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			
+						add_political_power = 200
+						add_war_support = 0.1
+					add_ideas = hon_future
+		}
+	}
+
+	#A Call For Reform
+	focus = {
+		id = HON_a_call_for_reform
+		icon = GFX_focus_SOV_the_path_of_marxism_leninism
+		x = 14
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_the_future_of_honduras  }
+		mutually_exclusive = { focus = HON_work_with_the_nationalists  }
+		completion_reward = {
+			add_popularity = {
+						    ideology = communism
+						    popularity = 0.10
+			
+			add_ideas = HON_reform
+			add_stability = -0.1
+		}
+	}
+	}
+
+#Work With The Nationalists
+focus = {
+    id = HON_work_with_the_nationalists
+    icon = GFX_focus_ger_reichskommisariats
+    x = 21
+    y = 1
+    cost = 5
+    search_filters = { FOCUS_FILTER_POLITICAL }
+    prerequisite = { focus = HON_the_future_of_honduras }
+	mutually_exclusive = { focus = HON_a_call_for_reform  }
+    available = {
+        is_subject = no
+    }
+    completion_reward = {
+        add_political_power = 100
+        add_stability = 0.15
+        add_popularity = { ideology = fascism popularity = 0.10 }
+		add_popularity = { ideology = neutrality popularity = 0.10 }
+        add_ideas = hon_nationalism
+    }
+}
+
+#Create The National Railway System
+focus = {
+    id = HON_create_the_national_railway_system
+    icon = GFX_focus_SOV_south_manchuria_railway
+    x = 13
+    y = 2
+    cost = 10
+    search_filters = { FOCUS_FILTER_INDUSTRY }
+    prerequisite = { focus = HON_a_call_for_reform }
+    available = {
+        is_subject = no
+    }
+    completion_reward = {
+    random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+
+				add_popularity = {
+						    ideology = communism
+						    popularity = 0.10
+		}
+    }
+}
+
+#Invite Foreign Settlers
+focus = {
+    id = HON_invite_foreign_settlers
+    icon = GFX_focus_SOV_socialism_in_one_country
+    x = 15
+    y = 2
+    cost = 10
+    search_filters = { FOCUS_FILTER_POLITICAL }
+    prerequisite = { focus = HON_a_call_for_reform }
+    available = {
+        is_subject = no
+    }
+    completion_reward = {
+        capital_scope = {
+            add_manpower = 2000
+        }
+
+	add_popularity = {
+						    ideology = communism
+						    popularity = 0.10
+		}
+
+    }
+}
+
+#The Blackshirts
+focus = {
+    id = HON_the_blackshirts
+    icon = GFX_HON_the_blackshirts-631733
+    x = 19
+    y = 2
+    cost = 10
+    search_filters = { FOCUS_FILTER_POLITICAL }
+    prerequisite = { focus = HON_work_with_the_nationalists }
+    mutually_exclusive = { focus = HON_carlists }
+    available = {
+        is_subject = no
+    }
+    completion_reward = {
+
+		retire_ideology_leader = fascism
+					set_party_name = { 
+			    ideology = fascism
+			    long_name = "Ravello Unity Party"
+			    name = RUP
+				}
+		add_popularity = { ideology = fascism popularity = 0.10 }
+
+add_country_leader_role = {
+				character =  HON_bobi
+				promote_leader = yes
+				country_leader = {
+					ideology = fascism_ideology
+					expire="1965.1.1.1"
+					id=-1
+					traits = {dictator} 
+				}
+			}
+    }
+}
+
+#The Carlists
+focus = {
+    id = HON_carlists
+    icon = GFX_focus_spa_no_compromise_on_carlist_ideals
+    x = 24
+    y = 2
+    cost = 10
+    search_filters = { FOCUS_FILTER_POLITICAL }
+    prerequisite = { focus = HON_work_with_the_nationalists }
+    mutually_exclusive = { focus = HON_the_blackshirts }
+    available = {
+        is_subject = no
+    }
+    completion_reward = {
+set_party_name = { 
+			    ideology = neutrality
+			    long_name = "House of Bourbon"
+			    name = "House of Bourbon"
+				}
+       remove_ideas = hon_nationalism
+	   add_ideas = hon_carlism
+	   add_popularity = { ideology = neutrality popularity = 0.10 }
+    }
+}
+
+#Carlist Coup
+	focus = {
+		id = HON_carlist_coup
+		icon = polcorp
+		x = 24
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_carlists  }
+		available = {
+			neutrality > 0.4
+						is_subject = no
+					
+		}
+		completion_reward = {
+			remove_ideas = hon_unstable_republic
+		retire_ideology_leader = neutrality
+		add_country_leader_role = {
+				character =  HON_carlos
+				promote_leader = yes
+				country_leader = {
+					ideology = despotism
+					expire="1965.1.1.1"
+					id=-1
+					traits = { the_sacred_king lifelong_carlist } 
+				}
+			}
+				set_politics = { ruling_party = neutrality elections_allowed = no }	
+		}
+	}
+
+#Coup d'etat
+focus = {
+    id = HON_comcoup
+    icon = GFX_goal_support_communism
+    x = 14
+    y = 3
+    cost = 5
+    search_filters = { FOCUS_FILTER_POLITICAL }
+    prerequisite = { focus = HON_create_the_national_railway_system focus = HON_invite_foreign_settlers }
+    available = {
+		communism > 0.4
+        is_subject = no
+    }
+    completion_reward = {
+
+		remove_ideas = hon_unstable_republic
+
+		set_politics = { ruling_party = communism elections_allowed = no }
+        add_ideas = HON_begin
+		add_stability = 0.1
+		add_popularity = {
+						    ideology = communism
+						    popularity = 0.20
+		}
+    }
+}
+
+#Militarism
+focus = {
+    id = HON_militarism
+    icon = GFX_goal_generic_political_pressure
+    x = 17
+    y = 3.5
+    cost = 10
+    search_filters = { FOCUS_FILTER_MANPOWER }
+    prerequisite = { focus = HON_the_blackshirts }
+    available = {
+        is_subject = no
+    }
+    completion_reward = {	
+		add_ideas = militarism_focus
+		add_popularity = { ideology = fascism popularity = 0.10 }
+		add_war_support = 0.1
+				add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 500
+				producer = ITA
+			}
+    }
+}
+
+#Di Ravello's Coup
+focus = {
+    id = HON_fas_coup
+    icon = GFX_goal_generic_political_pressure
+    x = 19
+    y = 4
+    cost = 1
+    search_filters = { FOCUS_FILTER_POLITICAL }
+    prerequisite = { focus = HON_the_blackshirts }
+    available = {
+		fascism > 0.4
+    }
+    completion_reward = {	
+		remove_ideas = hon_unstable_republic
+set_politics = { ruling_party = fascism elections_allowed = no }
+    }
+}
+
+#Political Coorporation
+focus = {
+    id = HON_political_cooperation
+    icon = GFX_focus_spa_supremacy_of_the_communion
+    x = 22
+    y = 3
+    cost = 5
+    search_filters = { FOCUS_FILTER_POLITICAL }
+    prerequisite = { focus = HON_carlists }
+	completion_reward = {
+			add_war_support = 0.1
+add_popularity = { ideology = neutrality popularity = 0.10 }
+					
+		}
+}
+	#Military Cooperation
+	focus = {
+		id = HON_military_cooperation
+		icon = GFX_goal_generic_political_pressure
+		x = 26
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_carlists  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			
+						add_command_power = 50
+						army_experience = 30
+					
+		}
+	}
+
+	#That Which is Rightfully Ours
+	focus = {
+		id = HON_that_which_is_rightfully_ours
+		icon = GFX_HON_that_which_is_rightfully_ours-631804
+		x = 19
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_fas_coup  }
+		available = {
+			            has_government = fascism
+						is_subject = no
+					
+		}
+		completion_reward = {
+			
+						add_political_power = 75
+						add_timed_idea = {
+						 	idea = HOA_rightfully_ours_idea
+						 	days = 720
+						 } 
+					
+		}
+	}
+
+	#Influence the education
+	focus = {
+		id = HON_school
+		icon = GFX_focus_generic_monarchy_1
+		x = 22
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_political_cooperation }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+             add_research_slot = 1
+		}
+	}
+
+	#The National Bank of Honduras
+	focus = {
+		id = HON_the_national_bank_of_honduras
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		x = 24
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_carlist_coup }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			
+						add_ideas = HON_Bank
+					
+		}
+	}
+
+	#Observe and Learn
+	focus = {
+		id = HON_observe_and_learn
+		icon = GFX_focus_chi_army_reform
+		x = 26
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_military_cooperation  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			
+						add_doctrine_cost_reduction = {
+							name = HOA_observe_and_learn
+							cost_reduction = 0.5
+							uses = 2
+							category = land_doctrine
+							category = air_doctrine
+							category = naval_doctrine
+						}
+					
+		}
+	}
+
+	#Foreign Investors
+	focus = {
+		id = HON_foreign_investors
+		icon = GFX_focus_SOV_socialism_in_one_country
+		x = 12
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_comcoup  }
+		available = {
+			
+						is_subject = no 
+					
+		}
+		completion_reward = {
+add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+					
+		}
+	}
+
+	#Find Allies
+	focus = {
+		id = HON_find_allies
+		icon = GFX_goal_generic_major_alliance
+		x = 14
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_comcoup  }
+		available = {
+			
+						is_subject = no 
+					
+		}
+		completion_reward = {
+       add_political_power = 100	
+		}
+	}
+
+	#Side With Moscow
+	focus = {
+		id = HON_side_with_moscow
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		x = 13
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_find_allies  }
+		mutually_exclusive = { focus = HON_create_an_allience  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+		SOV = {
+				country_event = generic.2
+			}
+
+			diplomatic_relation = { 
+	country = SOV
+	relation = non_aggression_pact 
+	SOV = {give_guarantee = HON}
+}
+		}
+	}
+
+	#Create An Allience
+	focus = {
+		id = HON_create_an_allience
+		icon = GFX_goal_support_fourth_int
+		x = 15
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_find_allies  }
+		mutually_exclusive = { focus = HON_side_with_moscow  }
+		available = {
+			
+						is_subject = no 
+					
+		}
+		completion_reward = {
+
+         create_faction = "Latino American Liberation Front"
+					
+		}
+	}
+
+	#Claim The North
+	focus = {
+		id = HON_claim_the_north
+		icon = GFX_HON_claim_the_north-631805
+		x = 17
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_that_which_is_rightfully_ours  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			
+			create_wargoal = {
+				target = ELS
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = GUA
+				type = annex_everything
+				expire = 0
+			}
+			
+            add_state_core = 314
+			add_state_core = 313
+			add_state_core = 311
+			add_state_core = 474
+
+		}
+	}
+
+	#Claim The Carribean
+	focus = {
+		id = HON_claim_the_carribean
+		icon = GFX_HON_claim_the_carribean-631809
+		x = 19
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_that_which_is_rightfully_ours  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+         add_war_support = 0.05
+			
+			create_wargoal = {
+				target = CUB
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = HAI
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = DOM
+				type = annex_everything
+				expire = 0
+			}
+			
+            add_state_core = 315
+			add_state_core = 689
+			add_state_core = 318
+			add_state_core = 319
+			add_state_core = 686
+			add_state_core = 693
+			add_state_core = 690
+			add_state_core = 319
+					
+		}
+	}
+
+	#Claim The South
+	focus = {
+		id = HON_claim_the_south
+		icon = GFX_HON_claim_the_south-631806
+		x = 21
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_that_which_is_rightfully_ours  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+add_war_support = 0.05
+			
+			create_wargoal = {
+				target = NIC
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = COS
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = PAN
+				type = annex_everything
+				expire = 0
+			}
+			
+            add_state_core = 317
+			add_state_core = 316
+			add_state_core = 304
+			add_state_core = 685
+		}
+	}
+
+	#Strengthen The Army
+	focus = {
+		id = HON_strengthen_the_army
+		icon = GFX_HON_strengthen_the_army-262028
+		x = 24
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_the_national_bank_of_honduras  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			
+						add_ideas = HOA_rallying_the_people_idea
+						army_experience = 30
+					
+		}
+	}
+
+	#Expand North
+	focus = {
+		id = HON_expand_north
+		icon = GFX_focus_mex_jefe_maximo
+		x = 25
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_strengthen_the_army  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			
+			create_wargoal = {
+				target = ELS
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = GUA
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = MEX
+				type = annex_everything
+				expire = 0
+			}
+			
+            add_state_core = 314
+			add_state_core = 313
+			add_state_core = 311
+			add_state_core = 474
+			add_state_core = 475
+			add_state_core = 476
+			add_state_core = 485
+			add_state_core = 477
+			add_state_core = 277
+			add_state_core = 478
+			add_state_core = 479
+			add_state_core = 481
+			add_state_core = 474
+			add_state_core = 480
+			add_state_core = 481
+			add_state_core = 482
+			add_state_core = 483
+			add_state_core = 484
+					
+		}
+	}
+
+	#Expand South
+	focus = {
+		id = HON_expand_south
+		icon = GFX_goal_generic_major_war
+		x = 23
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_strengthen_the_army  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+add_war_support = 0.05
+			
+			create_wargoal = {
+				target = NIC
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = COS
+				type = annex_everything
+				expire = 0
+			}
+
+			create_wargoal = {
+				target = PAN
+				type = annex_everything
+				expire = 0
+			}
+			
+            add_state_core = 317
+			add_state_core = 316
+			add_state_core = 304
+			add_state_core = 685
+		}
+	}
+
+	#Proclaim the New Spain
+	focus = {
+		id = HON_proclaim_the_new_spain
+		icon = spem
+		x = 24
+		y = 8
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_expand_south  } 
+		prerequisite = { focus = HON_expand_north  }
+		available = {
+						is_subject = no
+
+						controls_state = 316
+						controls_state = 317
+					
+		}
+		completion_reward = {
+
+				add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 2000
+				producer = ITA
+			}
+				add_equipment_to_stockpile = {
+				type = artillery_equipment_1
+				amount = 500
+				producer = ITA
+			}
+			
+		set_cosmetic_tag = NEWSPA
+		add_ideas = HON_leagacy
+					
+		}
+	}
+
+	#Hunt down the eagle - USA
+	focus = {
+		id = HON_USA
+		icon = GFX_focus_mex_redeem_aztlan
+		x = 24
+		y = 9
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_proclaim_the_new_spain  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+add_war_support = 0.05
+			
+			create_wargoal = {
+				target = USA
+				type = annex_everything
+				expire = 0
+			}
+		}
+	}
+
+	#Colombia
+	focus = {
+		id = HON_colombia
+		icon = GFX_focus_por_recover_latin_america
+		x = 23
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_proclaim_the_new_spain  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+add_war_support = 0.05
+			
+			create_wargoal = {
+				target = COL
+				type = annex_everything
+				expire = 0
+			}
+
+            add_state_core = 493
+			add_state_core = 306
+			add_state_core = 486
+		}
+	}
+
+	#Venezuela
+	focus = {
+		id = HON_venezuela
+		icon = GFX_focus_por_recover_latin_america
+		x = 25
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_proclaim_the_new_spain  }
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+add_war_support = 0.05
+			
+			create_wargoal = {
+				target = VEN
+				type = annex_everything
+				expire = 0
+			}
+
+            add_state_core = 488
+			add_state_core = 307
+			add_state_core = 489
+		}
+	}
+
+	
+
+	#The Tegucigalpa Military School
+	focus = {
+		id = HON_tegucigalpa_military_school
+		icon = GFX_HON_the_grand_university_of_honduras-632093
+		x = 14
+		y = 6
+		prerequisite = { focus = HON_side_with_moscow focus = HON_create_an_allience  }
+		cost = 5
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			
+						add_research_slot = 1
+					
+		}
+	}
+
+	#Liberate The Workers of  Guatemala
+	focus = {
+		id = HON_com_gua
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 12
+		y = 7
+		prerequisite = { focus = HON_tegucigalpa_military_school  }
+		cost = 10
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+						create_wargoal = {
+				target = GUA
+				type = annex_everything
+				expire = 0
+			}
+					
+		}
+	}
+
+	#Liberate The Workers of  ElSalvador
+	focus = {
+		id = HON_com_els
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 14
+		y = 7
+		prerequisite = { focus = HON_tegucigalpa_military_school  }
+		cost = 10
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+						create_wargoal = {
+				target = ELS
+				type = annex_everything
+				expire = 0
+			}
+					
+		}
+	}
+
+	#Liberate The Workers of Nicaragua
+	focus = {
+		id = HON_com_nic
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 13
+		y = 8
+		prerequisite = { focus = HON_tegucigalpa_military_school  }
+		cost = 10
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+						create_wargoal = {
+				target = NIC
+				type = annex_everything
+				expire = 0
+			}
+					
+		}
+	}
+
+	#Liberate The Workers of CostaRica
+	focus = {
+		id = HON_com_cos
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 16
+		y = 7
+		prerequisite = { focus = HON_tegucigalpa_military_school  }
+		cost = 10
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+						create_wargoal = {
+				target = COS
+				type = annex_everything
+				expire = 0
+			}
+					
+		}
+	}
+
+	#Liberate The Workers of Panama
+	focus = {
+		id = HON_com_pan
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 15
+		y = 8
+		prerequisite = { focus = HON_tegucigalpa_military_school  }
+		cost = 10
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+						create_wargoal = {
+				target = PAN
+				type = annex_everything
+				expire = 0
+			}
+					
+		}
+	}
+
+	#Liberate The Workers of Colombia
+	focus = {
+		id = HON_com_col
+		icon = GFX_focus_BRA_create_faction
+		x = 14
+		y = 9
+		prerequisite = { focus = HON_com_pan  } prerequisite = { focus = HON_com_nic  } 
+		cost = 10
+		available = {
+			
+						is_subject = no
+					
+		}
+		completion_reward = {
+			add_war_support = 0.05
+						create_wargoal = {
+				target = COL
+				type = annex_everything
+				expire = 0
+			}
+					
+		}
+	}
+
+	#Crown The Emperor
+	focus = {
+		id = HON_crown_the_emperor
+		icon = GFX_focus_hun_elect_a_king
+		x = 19
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_claim_the_carribean  } prerequisite = { focus = HON_claim_the_south  } prerequisite = { focus = HON_claim_the_north  }
+
+		completion_reward = {
+swap_ruler_traits = {
+						remove = dictator
+						add = emperador
+					}					
+					
+		}
+	}
+
+	#Proclaim the New Rome
+	focus = {
+		id = HON_proclaim_the_new_rome
+		icon = GFX_focus_ITA_mare_nostrum
+		x = 19
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_crown_the_emperor  }
+		available = {
+						is_subject = no
+
+						controls_state = 313
+						controls_state = 314
+						controls_state = 317
+						controls_state = 316
+						controls_state = 304
+					
+		}
+		completion_reward = {
+	
+		set_cosmetic_tag = HON_new_rome
+		set_province_name = { id = 12865 name = "Nueva Roma" }
+					
+		}
+	}
+
+}

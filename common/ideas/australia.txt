@@ -1,0 +1,309 @@
+ideas = {
+
+	country = {
+	
+		"The Future Of Down Under" = {
+			
+			picture = CHL_ligas_patrioticas
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				weekly_manpower = 500
+				political_power_factor = 0.15
+			}
+		}
+		
+			"Empower The Workers" = {
+			
+			picture = AST_future
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				communism_drift = 0.20
+		}
+		
+		
+	}
+	
+			"Australian Red Army" = {
+			
+			picture = NORDIC_army_communist
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_org_factor = 0.05
+				conscription = 0.01
+		}
+		
+		
+	}
+	
+			"Australian People's Bank" = {
+			
+			picture = tur_balkan_central_bank_wealthy_greece
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.15
+		}
+		
+		
+	}
+	
+		    "Fascism Banned" = {
+			
+			picture = generic_fascism_banned
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				fascism_drift = -0.20
+		}
+		
+		
+	}
+	
+			"Australia First" = {
+			
+			picture = AST_future
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				fascism_drift = 0.20
+		}
+		
+		
+	}
+	
+	  "Australian Centre Party" = {
+			
+			picture = AST_future
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				fascism_drift = 0.10
+				war_support_factor = 0.1
+		}
+		
+		
+	}
+	
+		"Australian Fascist Army" = {
+			
+			picture = generic_fascist_workers
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_org_factor = 0.05
+				conscription = 0.01
+		}
+		
+		
+	}
+	
+		"Our Own Path" = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+	
+			rule = {
+				can_create_factions = yes
+			}
+	
+			modifier = {
+				war_support_factor = 0.05
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}	
+	}
+	
+			"A Monarchist Plan" = {
+			
+			picture = AST_future
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				neutrality_drift = 0.20
+		}
+		
+		
+	}
+	
+		"Traditionalist Education" = {
+			
+			picture = AST_future
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				neutrality_drift = 0.20
+				conscription = 0.01
+				
+		}
+		
+		
+	}
+	
+			"Imperial Australian Army" = {
+			
+			picture = NORDIC_army_monarchist
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_org_factor = 0.05
+				conscription = 0.01
+		}
+		
+		
+	}
+	
+		   "Ottoman Exiles" = {
+			
+			picture = AST_future
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				neutrality_drift = 0.20
+		}
+		
+		
+	}
+	
+			"Turkic Spread" = {
+			
+			picture = AST_future
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				neutrality_drift = 0.20
+				
+		}
+		
+		
+	}
+	
+			"Janissaries" = {
+			
+			picture = ARG_spirit_of_the_conquistadors
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_org_factor = 0.05
+				conscription = 0.01
+		}
+		
+		
+	}
+	
+				"British Puppet" = {
+			
+			picture = eng_the_sun_never_sets
+
+			allowed = {
+				original_tag = AST
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.1
+		}
+		
+		
+	}
+	
+	
+}
